@@ -38,7 +38,7 @@ class StatelessServerHandler(socket: Socket) extends Handler(socket) {
     Ok("""<html>
          |<body>
          |    <form method="post" action="/name">
-         |      <p>名前：<input type="text" name="name"></p>
+         |      <p>名前：<input type="text" name="name" required>　<strong>必須</strong></p>
          |      <p><input type="submit" value="next"></p>
          |    </form>
          |</body>
@@ -51,9 +51,9 @@ class StatelessServerHandler(socket: Socket) extends Handler(socket) {
     Ok(s"""<html>
          |<body>
          |    <form method="post" action="/gender">
-         |      <p>性別：<input type="radio" name="gender" value="male">男性
+         |      <p>性別：<input type="radio" name="gender" value="male" required>男性
          |           <input type="radio" name="gender" value="female">女性
-         |           <input type="radio" name="gender" value="Other">その他</p>
+         |           <input type="radio" name="gender" value="Other">その他　<strong>必須</strong></p>
          |      <p><input type="submit" value="next"></p>
          |      <input type="hidden" name="name" value=$decodeInfo>
          |    </form>
@@ -67,8 +67,8 @@ class StatelessServerHandler(socket: Socket) extends Handler(socket) {
     Ok(s"""<html>
           |<body>
           |    <form method="post" action="/message">
-          |      <p>メッセージ：</p>
-          |      <p><textarea name="message" cols="30" rows="5"></textarea></p>
+          |      <p>メッセージ：<strong>必須</strong></p>
+          |      <p><textarea name="message" cols="30" rows="5" required></textarea></p>
           |      <p><input type="submit" value="next"></p>
           |      <input type="hidden" name="gender" value=$decodeInfo>
           |    </form>
